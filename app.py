@@ -1,14 +1,13 @@
 import os
 import connexion
+from services.redis import Redis
 
 from injector import Binder
 from flask_injector import FlaskInjector
 from connexion.resolver import RestyResolver
 
 def configure(binder: Binder) -> Binder:
-    binder.bind(
-
-    )
+    binder.bind(Redis, Redis("Redis123", "RedisDescrip"))
 
     return binder
 

@@ -18,6 +18,7 @@ produces:
 paths:
   /restaurant/:
     post:
+      operationId: api.restaurant.restaurant.class_instance.post
       parameters:
         - in: body
           name: restaurant
@@ -30,6 +31,7 @@ paths:
           schema:
             $ref: '#/definitions/Restaurant'
     get:
+      operationId: api.restaurant.restaurant.class_instance.get
       parameters:
         - in: path
           name: restaurant_id
