@@ -1,0 +1,70 @@
+swagger: "2.0"
+
+info:
+  version: 1.0.0
+  title: REST Service
+  license:
+    name: MIT
+
+basePath: /api
+
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+  /restaurant/:
+    post:
+      parameters:
+        - in: body
+          name: restaurant
+          required: true
+          schema:
+            $ref: '#/definitions/Restaurant'
+      responses:
+        '201':
+          description: 'Restaurant stored'
+          schema:
+            $ref: '#/definitions/Restaurant'
+    get:
+      parameters:
+        - in: path
+          name: restaurant_id
+          type: string
+          required: true
+      responses:
+        '201':
+          description: 'Restaurant stored'
+          schema:
+            $ref: '#/definitions/Restaurant'
+        '404':
+          description: 'Restaurant not found'
+
+definitions:
+  Address:
+    type: object
+    required:
+      - city
+    properties:
+      city:
+        type: string
+      street:
+        type: string
+  Restaurant:
+    type: object
+    required:
+      - name
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      rating:
+        type: integer
+      address:
+        $ref: '#/definitions/Address'
