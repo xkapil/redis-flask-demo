@@ -6,9 +6,20 @@ services:
     build: .
     environment:
       - MODE=dev
-      - REDIS_HOST=127.0.0.1
-      - REDIS_PORT=9200
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
     volumes:
       - .:/code
+    depends_on:
+      - redis
     ports:
       - "9091:9090"
+    links:
+      - "redis"
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ../data:/usr/share/elasticsearch/data

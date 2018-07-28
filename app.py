@@ -7,7 +7,7 @@ from flask_injector import FlaskInjector
 from connexion.resolver import RestyResolver
 
 def configure(binder: Binder) -> Binder:
-    binder.bind(Redis, Redis("Redis123", "RedisDescrip"))
+    binder.bind(Redis, Redis(os.environ['REDIS_HOST'], 6379))
 
     return binder
 
